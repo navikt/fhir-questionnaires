@@ -1,0 +1,10 @@
+# ╭──────────────────────────────────────ImplementationGuide───────────────────────────────────────╮
+# │  The properties below are used to create the ImplementationGuide resource. For a list of       │
+# │  supported properties, see: https://fshschool.org/docs/sushi/configuration/                    │
+# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+canonical: http://fhir.nav.no
+name: N/A
+status: unknown
+fhirVersion: 4.0.1
+FSHOnly: true

@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "kmahalingam.vscode-language-fsh",
+        "ms-azuretools.vscode-docker",
+        "omartawfik.github-actions-vscode",
+        "mathiasfrohlich.kotlin",
+        "sissel.shopify-liquid"
+    ]
+}

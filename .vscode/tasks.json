@@ -1,0 +1,59 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build docker-image",
+      "type": "shell",
+      "command": "docker build -t navikt/fhir-ig-dev ${workspaceFolder}/.docker",
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "SUSHI",
+      "type": "shell",
+      "command": "docker run -it --rm -v package-cache:/root/.fhir -v ${fileDirname}:/data navikt/fhir-ig-dev sushi /data",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Validator",
+      "type": "shell",
+      "command": "docker run -it --rm -v package-cache:/root/.fhir -v ${fileDirname}:/data navikt/fhir-ig-dev validator /data/fsh-generated/resources -ig /data/fsh-generated/resources -version 4.0",
+      "group": "test",
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "IG Publisher",
+      "type": "shell",
+      "command": "docker run -it --rm -v package-cache:/root/.fhir -v ${workspaceFolder}/ig-template:/ig-template:ro -v ${fileDirname}:/data/ig navikt/fhir-ig-dev publisher -ig /data/ig/ig.ini",
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean",
+      "type": "shell",
+      "windows": {
+        "command": "rm -recurse ${workspaceFolder}\\igs\\*\\fsh-generated, ${workspaceFolder}\\igs\\*\\input-cache, ${workspaceFolder}\\igs\\*\\output, ${workspaceFolder}\\igs\\*\\temp, ${workspaceFolder}\\igs\\*\\template"
+      },
+      "presentation": {
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
