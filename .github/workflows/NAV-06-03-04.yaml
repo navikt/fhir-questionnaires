@@ -9,10 +9,6 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        package: ${{fromJson(needs.changeFinder.outputs.nodePaths)}}
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
         id: release-please
