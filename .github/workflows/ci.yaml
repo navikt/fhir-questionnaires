@@ -1,0 +1,53 @@
+on:
+  push:
+    branches:
+      - main
+      - feature/*
+  # pull_request:
+  #   types: [ assigned, opened, synchronize, reopened, labeled ]
+name: ci
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     node: [10, 12, 14]
+    steps:
+      - uses: actions/checkout@v2
+      # - run: git config --global user.name 'CI'
+      # - run: git config --global user.email 'dummy@example.org'
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: ${{ matrix.node }}
+      
+      # Builds the .fsh files into FHIR .json resources.
+      # Doc: https://fshschool.org/docs/sushi/running
+      - name: 🍣 Run SUSHI
+        run: |
+          npm install -g fsh-sushi
+          sushi .
+
+      - name: 📥 Download test tools
+        run: |
+          wget -q https://github.com/navikt/fhir-validator-junit-engine/releases/latest/download/fhir-validator-junit-engine.jar
+          wget -q https://github.com/hapifhir/org.hl7.fhir.core/releases/latest/download/validator_cli.jar
+          wget -q https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.8.1/junit-platform-console-standalone-1.8.1.jar
+          
+      - name: ✔️ Run tests
+        run: java -jar junit-platform-console-standalone-1.8.1.jar -cp fhir-validator-junit-engine.jar:validator_cli.jar -f test/test-config.yaml --reports-dir test-results
+
+      - name: 📤 Publish results (unit test)
+        if: github.actor != 'dependabot[bot]' # requires write permission
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          commit: ${{ github.event.workflow_run.head_sha }}
+          files: "test-results/TEST-*.xml"
+
+      # - run: node --version
+      # - run: npm install --engine-strict
+      # - run: npm test
+      # - name: coverage
+      #   uses: codecov/codecov-action@v2
+      #   with:
+      #     name: actions ${{ matrix.node }}
+      #     fail_ci_if_error: true
