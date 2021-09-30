@@ -27,12 +27,11 @@ jobs:
           sushi .
       - name: Set Questionnaire version
         if: ${{ steps.release-please.outputs.release_created }}
+        uses: deef0000dragon1/json-edit-action/@v1
         env:
-          QUESTIONNAIRE_ID:  ${{ github.workflow }}
-          QUESTIONNAIRE_VERSION: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
-        run: |
-          npm install -g json
-          json -I -f fsh-generated/resources/Questionnaire-$QUESTIONNAIRE_ID.json -e "this.version='$QUESTIONNAIRE_VERSION'"
+          KEY: version
+          VALUE: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
+          FILE:  fsh-generated/resources/Questionnaire-${{ github.workflow }}.json
       - uses: shogo82148/actions-upload-release-asset@v1
         if: ${{ steps.release-please.outputs.release_created }}
         with:
