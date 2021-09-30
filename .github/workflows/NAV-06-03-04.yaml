@@ -1,0 +1,43 @@
+
+name: NAV-06-03-04
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{fromJson(needs.changeFinder.outputs.nodePaths)}}
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        id: release-please
+        with:
+          path: input/fsh/${{ github.workflow }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          monorepo-tags: true
+          package-name: ${{ github.workflow }}
+      - uses: actions/checkout@v2
+        if: ${{ steps.release-please.outputs.release_created }}
+      - name: 🍣 Run SUSHI
+        if: ${{ steps.release-please.outputs.release_created }}
+        run: |
+          npm install -g fsh-sushi
+          sushi .
+      - name: Set Questionnaire version
+        env:
+          QUESTIONNAIRE_ID:  ${{ github.workflow }}
+          QUESTIONNAIRE_VERSION: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
+        run: |
+          npm install -g json
+          json -I -f fsh-generated/resources/Questionnaire-$QUESTIONNAIRE_ID.json -e "this.version='$QUESTIONNAIRE_VERSION'"
+      - uses: shogo82148/actions-upload-release-asset@v1
+        if: ${{ steps.release-please.outputs.release_created }}
+        with:
+          upload_url: ${{ steps.release-please.outputs.upload_url }}
+          asset_path: fsh-generated/resources/Questionnaire-${{ github.workflow }}.json

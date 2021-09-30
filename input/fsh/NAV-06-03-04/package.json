@@ -1,0 +1,10 @@
+{
+  "name": "NAV-06-03-04",
+  "version": "1.0.1",
+  "devDependencies": {
+    "standard-version": "^9.3.1"
+  },
+  "scripts": {
+    "release": "standard-version"
+  }
+}
