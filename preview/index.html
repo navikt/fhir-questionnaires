@@ -12,7 +12,11 @@
    src="https://clinicaltables.nlm.nih.gov/lforms-versions/27.1.0/lforms.min.js"></script>
   <script
    src="https://clinicaltables.nlm.nih.gov/lforms-versions/27.1.0/fhir/R4/lformsFHIR.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/fhirclient@2.3.10/build/fhir-client.min.js"></script>
    <script>
+    var fhirAPI = FHIR.client({serverUrl: 'http://localhost:8080/fhir'});
+    LForms.Util.setFHIRContext(fhirAPI);
+    
     function onChange(event) {
         var reader = new FileReader();
         reader.onload = onReaderLoad;

@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/navikt/fhir-validator-junit-engine/main/test-specification.schema.json
+---
+validator:
+  version: '4.0'
+  ig:
+    - "../fsh-generated/resources"
+#    - hl7.fhir.us.core#1.0.1
+tests:
+  - title: Validate generated resources
+    fileMatch:
+      - ../fsh-generated/resources/**
+  - title: Valid questionnaire responses
+    fileMatch:
+    - usecases/**_valid.json
+  # - fileMatch: "test-resources/Patient-without-required-language.json"
+  #   expectedIssues:
+  #     - severity: ERROR
+  #       message: "minimum required = 1, but only found 0"
