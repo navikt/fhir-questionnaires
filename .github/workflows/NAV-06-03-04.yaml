@@ -31,6 +31,7 @@ jobs:
           QUESTIONNAIRE_ID:  ${{ github.workflow }}
           QUESTIONNAIRE_VERSION: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
         run: |
+          npm install -g json
           json -I -f fsh-generated/resources/Questionnaire-$QUESTIONNAIRE_ID.json -e "this.version='$QUESTIONNAIRE_VERSION'"
       - uses: shogo82148/actions-upload-release-asset@v1
         if: ${{ steps.release-please.outputs.release_created }}
