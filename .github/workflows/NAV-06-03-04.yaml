@@ -26,6 +26,7 @@ jobs:
           npm install -g fsh-sushi
           sushi .
       - name: Set Questionnaire version
+        if: ${{ steps.release-please.outputs.release_created }}
         env:
           QUESTIONNAIRE_ID:  ${{ github.workflow }}
           QUESTIONNAIRE_VERSION: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
