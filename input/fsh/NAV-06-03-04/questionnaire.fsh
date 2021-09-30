@@ -1,7 +1,7 @@
-Instance: NAV-06-03.04
+Instance: NAV-06-03-04
 InstanceOf: Questionnaire
 Usage: #example
-* url = "https://fhir.nav.no/Questionnaire/NAV-06-03.04"
+* url = "https://fhir.nav.no/Questionnaire/NAV-06-03-04"
 * title = "Søknad om grunnstønad - 7 Legens uttalelse"
 * status = #draft
 * subjectType = #Patient
