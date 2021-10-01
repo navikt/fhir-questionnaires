@@ -2,23 +2,14 @@ on:
   push:
     branches:
       - main
-      - feature/*
-  # pull_request:
-  #   types: [ assigned, opened, synchronize, reopened, labeled ]
+  pull_request:
+
 name: ci
 jobs:
   test:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     node: [10, 12, 14]
     steps:
       - uses: actions/checkout@v2
-      # - run: git config --global user.name 'CI'
-      # - run: git config --global user.email 'dummy@example.org'
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node }}
       
       # Builds the .fsh files into FHIR .json resources.
       # Doc: https://fshschool.org/docs/sushi/running
@@ -42,12 +33,3 @@ jobs:
         with:
           commit: ${{ github.event.workflow_run.head_sha }}
           files: "test-results/TEST-*.xml"
-
-      # - run: node --version
-      # - run: npm install --engine-strict
-      # - run: npm test
-      # - name: coverage
-      #   uses: codecov/codecov-action@v2
-      #   with:
-      #     name: actions ${{ matrix.node }}
-      #     fail_ci_if_error: true
