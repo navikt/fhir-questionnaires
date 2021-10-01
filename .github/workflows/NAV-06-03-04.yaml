@@ -51,4 +51,4 @@ jobs:
           mv fsh-generated/resources/Questionnaire-${{ github.workflow }}.json input/fsh/${{ github.workflow }}/Questionnaire-${{ github.workflow }}.json
           cd input/fsh/${{ github.workflow }}
           npm install
-          npm publish --access=public
+          npm publish
