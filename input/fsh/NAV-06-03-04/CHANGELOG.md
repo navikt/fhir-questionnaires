@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://www.github.com/navikt/fhir-questionnaires/compare/NAV-06-03-04-v1.0.3...NAV-06-03-04-v1.0.4) (2021-10-01)
+
+
+### Bug Fixes
+
+* NPM package publishing ([4892522](https://www.github.com/navikt/fhir-questionnaires/commit/4892522f2837fa6f9c4219db6c4b8a3afd37c882))
+
 ### [1.0.3](https://www.github.com/navikt/fhir-questionnaires/compare/NAV-06-03-04-v1.0.2...NAV-06-03-04-v1.0.3) (2021-09-30)
 
 
