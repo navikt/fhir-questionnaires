@@ -1,4 +1,11 @@
 {
   "name": "NAV-06-03-04",
-  "version": "1.0.3"
+  "version": "1.0.3",
+  "files": [
+    "Questionnaire-NAV-06-03-04.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navikt/fhir-questionnaires.git"
+  }
 }

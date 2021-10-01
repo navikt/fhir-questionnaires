@@ -37,3 +37,18 @@ jobs:
         with:
           upload_url: ${{ steps.release-please.outputs.upload_url }}
           asset_path: fsh-generated/resources/Questionnaire-${{ github.workflow }}.json
+
+      - uses: actions/setup-node@v1
+        if: ${{ steps.release-please.outputs.release_created }}
+        with:
+          node-version: 14
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Publish
+        if: ${{ steps.release-please.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mv fsh-generated/resources/Questionnaire-${{ github.workflow }}.json input/fsh/${{ github.workflow }}/Questionnaire-${{ github.workflow }}.json
+          cd input/fsh/${{ github.workflow }}
+          npm install
+          npm publish --access=public
