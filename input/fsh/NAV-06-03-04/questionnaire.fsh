@@ -1,7 +1,7 @@
 Instance: NAV-06-03-04
 InstanceOf: Questionnaire
 Usage: #definition
-* url = "https://fhir.nav.no/Questionnaire/NAV-06-03-04"
+* url = "http://fhir.nav.no/Questionnaire/NAV-06-03-04"
 * title = "Søknad om grunnstønad - 7 Legens uttalelse"
 * status = #draft
 * subjectType = #Patient
