@@ -2,6 +2,16 @@
 
 This repository contains the FHIR Questionnaires supported by [NAV](https://nav.no).
 
+## Preview
+
+To preview a questionnaire run (you need to have sushi installed: `npm install -g fsh-sushi`):
+
+```
+sushi .
+```
+
+Then open the `preview/index,html` file with a browser, and select the generated json file of the questionnaire located at: `fsh-generated/resources`
+
 ## Development
 
 The Questionnaires are developed using [FSH](https://build.fhir.org/ig/HL7/fhir-shorthand/overview.html) ([Tutorial](https://fshschool.org/docs/tutorials/basic/)).
