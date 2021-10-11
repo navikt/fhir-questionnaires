@@ -1,34 +1,17 @@
 {
-    "files.exclude": {
-        "**/build": true,
-        ".idea": true,
-        ".gradle": true,
-        "gradle": true,
-        "gradlew": true,
-        "gradlew.bat": true,
-        "package-cache": true,
-        "igs/*/input-cache": true,
-        "igs/*/temp": true,
-        "igs/*/template": true,
-        "igs/*/*.jar": true
-    },
+    "editor.tabSize": 2,
+    "files.eol": "\n",
     "json.schemas": [
         {
             // The schema provides IntelliSense when editing json files containing fhir resources (e.g. StructureDefinition). 
             "fileMatch": [
-                "igs/*/input/*/*.json",
-                "igs/*/src/test/resources/*/*.json",
+                "fsh-generated/**.json",
+                "test/**.json",
             ],
             "url": "https://www.hl7.org/fhir/fhir.schema.json"
         },
-        {
-            // The schema provides IntelliSense when editing tests.json files 
-            "fileMatch": [
-                "igs/*/src/test/resources/tests.json",
-            ],
-            "url": "./tests.schema.json"
-        }
     ],
-    "editor.tabSize": 2,
-    "files.eol": "\n"
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/navikt/fhir-validator-junit-engine/main/test-specification.schema.json": "test/**.yaml",
+    },
 }

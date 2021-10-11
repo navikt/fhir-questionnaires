@@ -1,0 +1,22 @@
+{
+  "name": "fhir-dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node scripts/download-jars.js",
+    "clean": "del-cli fsh-generated --force",
+    "clean-jars": "del-cli jars --force",
+    "build": "sushi .",
+    "test": "java -jar jars/junit-platform-console-standalone-1.8.1.jar -cp jars/fhir-validator-junit-engine.jar:jars/validator_cli.jar -f test/*.yaml",
+    "validate": "java -jar jars/validator_cli.jar fsh-generated/resources -version 4.0 -tx n/a"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "del-cli": "^4.0.1",
+    "download": "^8.0.0",
+    "fs": "0.0.1-security",
+    "sushi": "^2.1.0"
+  }
+}

@@ -47,7 +47,7 @@
   "author": {
     "reference": "#questauth"
   },
-  "questionnaire": "https://fhir.nav.no/Questionnaire/NAV-06-03-04",
+  "questionnaire": "http://fhir.nav.no/Questionnaire/NAV-06-03-04",
   "item": [
     {
       "linkId": "7.1",
