@@ -11,10 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
           
+      - name: 🗂️ Cache FHIR Packages
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.fhir/packages
+          key: fhir-packages
+
       - name: ✔️ Run tests
         run: |
           npm install
           npm test -- --reports-dir test-results
+        continue-on-error: true
 
       - name: 📤 Publish results (unit test)
         if: github.actor != 'dependabot[bot]' # requires write permission
