@@ -38,7 +38,6 @@ Usage: #definition
       
       Ekstrautgiftene må som hovedregel vare i 2-3 år eller mer på grunn av den medisinske tilstanden. Utgifter til medisiner dekkes ikke av grunnstønad.
 
-      
       Det gis bare grunnstønad hvis pasienten har ekstrautgifter til: drift av tekniske hjelpemidler; transport; førerhund; servicehund; fordyret kosthold på grunn av spesialdiett; litasje på klær, sengetøy, sko og støvler som følge av uvanlig ofte vasking eller ekstra slitasje på grunn av bruken.
 
       Les mer: https://www.nav.no/no/person/familie/grunn-og-hjelpestonad/grunnstonad
@@ -474,6 +473,7 @@ Usage: #definition
         * linkId = "hjelpstonad-sykdom"
         * text = "Hvilke sykdommer bruker har som er aktuelle for denne saken"
         * type = #choice
+        * repeats = true
         * answerOption[+].valueCoding = #astma "Astma"
         * answerOption[+].valueCoding = #hudlidelse "Hudlidelse"
         * answerOption[+].valueCoding = #blodersykdom "Blødersykdom"
