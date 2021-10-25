@@ -6,6 +6,9 @@
 </head>
 <body>
   <input id="file" type="file" accept="application/json" />
+  <button onclick="showQR()">
+    Show FHIR QuestionnaireResponse
+  </button>
   <div id=formContainer></div>
   
   <script
@@ -17,6 +20,12 @@
     var fhirAPI = FHIR.client({serverUrl: 'http://localhost:8080/fhir'});
     // LForms.Util.setFHIRContext(fhirAPI);
 
+    // Define the function for showing the QuestionnaireResponse
+    function showQR() {
+      var qr = LForms.Util.getFormFHIRData('QuestionnaireResponse', 'R4');
+      console.log(JSON.stringify(qr, null, 2));
+      window.alert(JSON.stringify(qr, null, 2));
+    }
     function onChange(event) {
         var reader = new FileReader();
         reader.onload = onReaderLoad;
