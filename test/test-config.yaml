@@ -6,11 +6,9 @@ validator:
     - "../fsh-generated/resources"
 #    - hl7.fhir.us.core#1.0.1
 tests:
-  - title: Validate generated resources
-    fileMatch:
+  - fileMatch:
       - ../fsh-generated/resources/**
-  - title: Valid questionnaire responses
-    fileMatch:
+  - fileMatch:
     - usecases/**_valid.json
   # - fileMatch: "test-resources/Patient-without-required-language.json"
   #   expectedIssues:
