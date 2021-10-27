@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "input/fsh/${{ github.workflow }}/**"
+      - "input/fsh/hjelpestonad/**"
 
 jobs:
   release:
