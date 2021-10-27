@@ -1,0 +1,54 @@
+
+name: grunnstonad
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v2
+        id: release-please
+        with:
+          path: input/fsh/${{ github.workflow }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          monorepo-tags: true
+          package-name: ${{ github.workflow }}
+      - uses: actions/checkout@v2
+        if: ${{ steps.release-please.outputs.release_created }}
+      - name: 🍣 Run SUSHI
+        if: ${{ steps.release-please.outputs.release_created }}
+        run: |
+          npm install -g fsh-sushi
+          sushi .
+      - name: Set Questionnaire version
+        if: ${{ steps.release-please.outputs.release_created }}
+        uses: deef0000dragon1/json-edit-action/@v1
+        env:
+          KEY: version
+          VALUE: ${{ steps.release-please.outputs.major }}.${{ steps.release-please.outputs.minor }}.${{ steps.release-please.outputs.patch }}
+          FILE:  fsh-generated/resources/Questionnaire-${{ github.workflow }}.json
+      - uses: shogo82148/actions-upload-release-asset@v1
+        if: ${{ steps.release-please.outputs.release_created }}
+        with:
+          upload_url: ${{ steps.release-please.outputs.upload_url }}
+          asset_path: fsh-generated/resources/Questionnaire-${{ github.workflow }}.json
+
+      - uses: actions/setup-node@v1
+        if: ${{ steps.release-please.outputs.release_created }}
+        with:
+          node-version: 14
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Publish
+        if: ${{ steps.release-please.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mv fsh-generated/resources/Questionnaire-${{ github.workflow }}.json input/fsh/${{ github.workflow }}/Questionnaire-${{ github.workflow }}.json
+          cd input/fsh/${{ github.workflow }}
+          npm install
+          npm publish

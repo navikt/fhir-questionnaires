@@ -1,0 +1,11 @@
+{
+  "name": "@navikt/fhir-questionnaires_grunnstonad",
+  "version": "0.1.0",
+  "files": [
+    "Questionnaire-grunnstonad.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navikt/fhir-questionnaires.git"
+  }
+}
