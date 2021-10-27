@@ -94,6 +94,7 @@ Usage: #definition
         * operator = #=
         * answerBoolean = true
 
+
   // * item[+]
   //   * linkId = "hjelpestonad-questionnaire-adult"
   //   * text = "Vennligst velg sjkema som passer best dette søknad"
