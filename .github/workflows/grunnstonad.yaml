@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        if: ${{ steps.release-please.outputs.release_created }}
       - name: 🍣 Run SUSHI
-        if: ${{ steps.release-please.outputs.release_created }}
         run: |
           npm install -g fsh-sushi
           sushi .

@@ -7,6 +7,7 @@ Usage: #definition
 * subjectType = #Patient
 * version = "SNAPSHOT"
 
+
 * item[+]
   * linkId = "patient-group"
   * type = #group
