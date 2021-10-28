@@ -5,6 +5,7 @@ Usage: #definition
 * title = "Hjelpstønad"
 * status = #draft
 * subjectType = #Patient
+* version = "SNAPSHOT"
 
 * item[+]
   * linkId = "patient-group"
