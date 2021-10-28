@@ -5,11 +5,11 @@ die () {
 }
 
 [ "$#" -eq 1 ] || die "argument required, provide location of json file"
-[ -f $1 ] || die "$1 does not exist"
+[ -f "$1" ] || die "$1 does not exist"
 
 
-content=$(jq @json < $1) || die "Could not process json content from $1"
-title=$(jq -r '.title' < $1) || die "Could not extract title from $1"
+content=$(jq @json < "$1") || die "Could not process json content from $1"
+title=$(jq -r '.title' < "$1") || die "Could not extract title from $1"
 
 cat << EOF
 <html>

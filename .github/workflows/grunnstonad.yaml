@@ -9,6 +9,28 @@ on:
       - "input/fsh/grunnstonad/**"
 
 jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        if: ${{ steps.release-please.outputs.release_created }}
+      - name: 🍣 Run SUSHI
+        if: ${{ steps.release-please.outputs.release_created }}
+        run: |
+          npm install -g fsh-sushi
+          sushi .
+      - name: Generate preview
+        run: |
+          mkdir generated
+          preview/generate-preview.sh fsh-generated/resources/Questionnaire-${{ github.workflow }}.json > generated/index.html
+      - name: 🚀 Deploy to GitHub-Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: generated
+          destination_dir: questionnaires/${{ github.workflow }}/development
+          exclude_assets: '**.zip,**.tgz,**.pack'
+          commit_message: '${{ env.IG }}: ${{ github.event.head_commit.message }}'
   release:
     runs-on: ubuntu-latest
     steps:
