@@ -125,7 +125,7 @@ Usage: #definition
   * item[+]
     * linkId = "hjelpestonad-questionnaire-child"
     * prefix = "2.6"
-    * text = "Vennligst velg sjkema som passer best dette søknad"
+    * text = "Vennligst velg skjema som er mest relevant"
     * type = #choice
     * answerOption[+].valueCoding = #general "Generell"
     * answerOption[+].valueCoding = #hudlidelse "Hudlidelse"

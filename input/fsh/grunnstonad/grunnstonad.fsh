@@ -11,7 +11,7 @@ Usage: #definition
   * linkId = "patient-group"
   * prefix = "1"
   * type = #group
-  * text = "Pasients uttalelse"
+  * text = "Opplysninger om pasienten"
 
   * item[+]
     * linkId = "patient-name"
