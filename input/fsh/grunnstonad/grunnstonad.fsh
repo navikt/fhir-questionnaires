@@ -276,6 +276,16 @@ Usage: #definition
           * answerCoding = #ja
 
       * item[+]
+        * linkId = "transport-psykisk-terapi-ja-navn"
+        * prefix = "2.10.3.2"
+        * type = #date
+        * text = "Oppgi navnet på spesialisten eller psykiateren"
+        * enableWhen[+]
+          * question = "transport-psykisk-terapi"
+          * operator = #=
+          * answerCoding = #ja
+
+      * item[+]
         * linkId = "1.1.2.4.1-display"
         * prefix = "2.10.3.2"
         * type = #display
@@ -644,13 +654,13 @@ Usage: #definition
       * linkId = "fordyret-kosthold-coliaki-test-vevstyping"
       * prefix = "2.12.5"
       * type = #text
-      * text = "Resultater av vevstyping"
+      * text = "Resultater av vevstyping (ikke nødvendig for barn)"
 
     * item[+]
       * linkId = "fordyret-kosthold-coliaki-test-biopsi"
       * prefix = "2.12.6"
       * type = #text
-      * text = "Biopsiresultater"
+      * text = "Biopsiresultater (ikke nødvendig for barn)"
 
     * item[+]
       * linkId = "fordyret-kosthold-coliaki-reaction-test"
@@ -767,7 +777,13 @@ Usage: #definition
       * linkId = "fordyret-kosthold-hvete-glutenintoleranse-msg"
       * prefix = "2.14.0"
       * type = #display
-      * text = "Det i"
+      * text = """[Tilføyd 11/11. Endret 8/14]
+
+I henhold til Statens råd for ernæring og helse, anses ikke melk som en nødvendig del av kostholdet. (Unntak fra dette må gjelde for spedbarn og småbarn.) Melkefri kosthold anses kun å medføre et næringsmessig behov for økt tilførsel av kalsium i form av kalsiumtabletter eller gjennom noe økt inntak av kalsiumholdig kost. Nødvendige ekstrautgifter som følge av laktoseintoleranse vil derfor være utgifter til produkter som går til erstatning for manglende kalsium som melkefritt kosthold medfører. Disse utgiftene anses å være lave.
+
+Det er lang praksis i tilsvarende saker på at krav om grunnstønad til diett uten melk og egg avslås, da slik diett ikke medfører ekstrautgifter av en størrelse som gir rett til grunnstønad. Denne praksis er også stadfestet av trygdretten i en rekke kjennelser jfr. Trygderettskjennelser, TRR-2006-2431, TRR-2007-2360, TRR-2008-784.
+
+For spedbarn og små barn er melk normalt en stor del av den daglige næringstilførsel. Det kan søkes om dekning av melkeerstatningsdrikker fra HELFO, etter forskrift til folketrygdloven § 5-14 – forskriftens § 6."""
     // * item[+]
     //   * linkId = "fordyret-kosthold-hvete-glutenintoleranse-sykdom"
     //   * prefix = "2.14.1"

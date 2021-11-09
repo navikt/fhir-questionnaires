@@ -127,7 +127,7 @@ Usage: #definition
     * prefix = "2.6"
     * text = "Vennligst velg skjema som er mest relevant"
     * type = #choice
-    * answerOption[+].valueCoding = #general "Generell"
+    * answerOption[+].valueCoding = #general "Annet"
     * answerOption[+].valueCoding = #hudlidelse "Hudlidelse"
     * answerOption[+].valueCoding = #astma "Astma"
     * answerOption[+].valueCoding = #blodersykdom "Blødersykdom"
