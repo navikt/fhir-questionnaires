@@ -36,7 +36,7 @@ Usage: #definition
   * item[+]
     * linkId = "grunnstonad-support-types"
     * prefix = "1.4"
-    * text = "Har pasienten grunn av sykdom, skade eller lyte ekstrautgifter til:"
+    * text = "Har pasienten på grunn av sin medisinske tilstand:"
     * type = #choice
     * answerOption[+].valueCoding = #drift-av-tekniske-hjelpemidler "Drift av tekniske hjelpemidler"
     * answerOption[+].valueCoding = #transport "Transport"
@@ -147,7 +147,7 @@ Usage: #definition
     * answerOption[+].valueCoding = #fordyret-kosthold-general "Fordyret kosthold"
     * answerOption[+].valueCoding = #fordyret-kosthold-coliaki "Fordyret kosthold - Cøliaki"
     * answerOption[+].valueCoding = #fordyret-kosthold-hveteallergi "Fordyret kosthold - Hveteallergi"
-    * answerOption[+].valueCoding = #fordyret-kosthold-hvete-glutenintoleranse "Fordyret kosthold - Hvete-/glutenintoleranse"
+    * answerOption[+].valueCoding = #fordyret-kosthold-hvete-glutenintoleranse "Fordyret kosthold - Laktoseintoleranse"
     * answerOption[+].valueCoding = #fordyret-kosthold-cystisk-fibrose "Fordyret kosthold - Cystisk fibrose"
     * answerOption[+].valueCoding = #fordyret-kosthold-medfodte-stoffskiftesykdommer "Fordyret kosthold - Medfødte stoffskiftesykdommer"
     * answerOption[+].valueCoding = #fordyret-kosthold-epilepsi-ketogen "Fordyret kosthold - Epilepsi/ketogen diett"
@@ -757,55 +757,60 @@ Usage: #definition
     * linkId = "fordyret-kosthold-hvete-glutenintoleranse"
     * prefix = "2.14"
     * type = #group
-    * text = "Fordyret kosthold - Hvete-/glutenintoleranse"
+    * text = "Fordyret kosthold - Laktoseintoleranse"
     * enableWhen[+]
       * question = "fordyret-kosthold-details"
       * operator = #=
       * answerCoding = #fordyret-kosthold-hvete-glutenintoleranse
 
     * item[+]
-      * linkId = "fordyret-kosthold-hvete-glutenintoleranse-sykdom"
-      * prefix = "2.14.1"
-      * type = #text
-      * text = "Påvist sykdom"
+      * linkId = "fordyret-kosthold-hvete-glutenintoleranse-msg"
+      * prefix = "2.14.0"
+      * type = #display
+      * text = "Det i"
+    // * item[+]
+    //   * linkId = "fordyret-kosthold-hvete-glutenintoleranse-sykdom"
+    //   * prefix = "2.14.1"
+    //   * type = #text
+    //   * text = "Påvist sykdom"
 
-    * item[+]
-      * linkId = "fordyret-kosthold-hvete-glutenintoleranse-findings"
-      * prefix = "2.14.2"
-      * type = #text
-      * text = "Kliniske funn"
+    // * item[+]
+    //   * linkId = "fordyret-kosthold-hvete-glutenintoleranse-findings"
+    //   * prefix = "2.14.2"
+    //   * type = #text
+    //   * text = "Kliniske funn"
 
-    * item[+]
-      * linkId = "fordyret-kosthold-hvete-glutenintoleranse-findings"
-      * prefix = "2.14.3"
-      * type = #text
-      * text = "Provokasjon i regi av spesialist"
+    // * item[+]
+    //   * linkId = "fordyret-kosthold-hvete-glutenintoleranse-findings"
+    //   * prefix = "2.14.3"
+    //   * type = #text
+    //   * text = "Provokasjon i regi av spesialist"
 
-    * item[+]
-      * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
-      * prefix = "2.14.4"
-      * type = #choice
-      * text = "Er du spesialisten som har stilt diagnosen?"
-      * answerOption[+].valueString = "Ja"
-      * answerOption[+].valueString = "Nei"
-      * item[+]
-        * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-name"
-        * prefix = "2.14.4.1"
-        * type = #text
-        * text = "Hvilken spesialist som har stilt diagnosen?"
-        * enableWhen[+]
-          * question = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
-          * operator = #=
-          * answerString = "Nei"
-      * item[+]
-        * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-addreess"
-        * prefix = "2.14.4.2"
-        * type = #text
-        * text = "Hvor spesialisten arbeider?"
-        * enableWhen[+]
-          * question = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
-          * operator = #=
-          * answerString = "Nei"
+    // * item[+]
+    //   * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
+    //   * prefix = "2.14.4"
+    //   * type = #choice
+    //   * text = "Er du spesialisten som har stilt diagnosen?"
+    //   * answerOption[+].valueString = "Ja"
+    //   * answerOption[+].valueString = "Nei"
+    //   * item[+]
+    //     * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-name"
+    //     * prefix = "2.14.4.1"
+    //     * type = #text
+    //     * text = "Hvilken spesialist som har stilt diagnosen?"
+    //     * enableWhen[+]
+    //       * question = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
+    //       * operator = #=
+    //       * answerString = "Nei"
+    //   * item[+]
+    //     * linkId = "fordyret-kosthold-hvete-glutenintoleranse-specialist-addreess"
+    //     * prefix = "2.14.4.2"
+    //     * type = #text
+    //     * text = "Hvor spesialisten arbeider?"
+    //     * enableWhen[+]
+    //       * question = "fordyret-kosthold-hvete-glutenintoleranse-specialist-question"
+    //       * operator = #=
+    //       * answerString = "Nei"
 
 
 
