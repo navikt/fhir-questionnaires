@@ -1,6 +1,6 @@
 {
   "name": "@navikt/fhir-questionnaires_nav-06-03-04",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "files": [
     "Questionnaire-NAV-06-03-04.json"
   ],
