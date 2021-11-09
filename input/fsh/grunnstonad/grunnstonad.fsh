@@ -56,9 +56,9 @@ Usage: #definition
   * item[+]
     * linkId = "diagnoses"
     * prefix = "2.1"
-    * type = #choice
+    * type = #open-choice
     * text = "Hvilke(n) diagnose(r) har søkeren?"
-    * answerValueSet = "http://fhir.nav.no/ValueSet/icd-10-cm"
+    // * answerValueSet = "http://fhir.nav.no/ValueSet/icd-10-cm"
     * required = true
     * repeats = true
     * item[+]
