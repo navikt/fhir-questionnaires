@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://www.github.com/navikt/fhir-questionnaires/compare/fhir-questionnaires_nav-06-03-04-v1.0.0...fhir-questionnaires_nav-06-03-04-v1.0.1) (2021-11-09)
+
+
+### Bug Fixes
+
+* Remove https from cannonical ([484bcce](https://www.github.com/navikt/fhir-questionnaires/commit/484bccef1b20c924ac0e94e286812699a8d7d2b8))
+* test changelog tracking ([1fc4aa8](https://www.github.com/navikt/fhir-questionnaires/commit/1fc4aa8f411df93f7e86f8e820ed702c8e860ffa))
+
 ## 1.0.0 (2021-10-01)
 
 
